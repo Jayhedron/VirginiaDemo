@@ -1,0 +1,24 @@
+.vir-card {
+    background-color: #1b6ec2;
+
+}
+
+.vir-nav {
+    background-color: #1b6ec2 !important;
+}
+
+.vir-nav-top {
+    color: #ffffff;
+}
+
+.vir-content {
+    line-height: 1.5;
+}
+
+.vir-content-background {
+    background-color: #97c8f0
+}
+
+.custom-line-series .rz-line {
+    fill: #ff0000;
+}

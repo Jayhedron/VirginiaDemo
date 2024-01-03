@@ -1,0 +1,64 @@
+@page "/reps"
+
+@using System.Text.Json
+@using Radzen
+@using Radzen.Blazor
+@inject IHttpClientFactory HttpClientFactory
+@inject NavigationManager NavigationManager
+
+<RadzenCard class="vir-card rz-shadow-0 rz-border-radius-2 rz-p-8" style="margin: 1rem calc(-1 * var(--rz-card-padding));">
+        <RadzenRow RowGap="0">
+            <RadzenColumn SizeSM="4">
+                <RadzenText TextStyle="TextStyle.H6" class="rz-color-on-primary-light rz-display-flex rz-mt-2 rz-mb-4">
+                    162nd Virginia General Assembly
+                </RadzenText>
+                <RadzenText TextStyle="TextStyle.Body1" class="rz-color-on-primary-light">
+                    <b>
+                        The Virginia House of Delegates is reelected every two years, with intervening vacancies filled by special election. The list below contains the House delegates that are currently serving in the 162nd Virginia General Assembly, which convened in January 2022.
+                    </b>
+                </RadzenText>
+            </RadzenColumn>
+        </RadzenRow>
+    </RadzenCard>
+
+<RadzenDataGrid AllowSorting="true" Data="@names" TItem="Representative">
+    <Columns>
+        <RadzenDataGridColumn TItem="Representative" Property="FirstName" Title="First Name" Width="160px"  />
+        <RadzenDataGridColumn TItem="Representative" Property="LastName" Title="Last Name" Width="160px" SortOrder="SortOrder.Ascending"/>
+        <RadzenDataGridColumn TItem="Representative" Property="District" Title="District #" Width="130px"  />
+        <RadzenDataGridColumn TItem="Representative" Property="Room" Title="Room #" Width="130px" Sortable="false"  />
+        <RadzenDataGridColumn TItem="Representative" Property="Party" Title="Party" Width="120px" />
+        <RadzenDataGridColumn TItem="Representative" Property="CapitolPhone" Title="Capitol Phone" Width="140px"/>
+        <RadzenDataGridColumn TItem="Representative" Property="DistrictPhone" Title="District Phone" Width="140px" />
+        <RadzenDataGridColumn TItem="Representative" Property="Email" Title="Email" />
+    </Columns>
+</RadzenDataGrid>
+
+@code {
+
+    
+    private List<Representative>? names;
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var httpClient = HttpClientFactory.CreateClient();
+        httpClient.BaseAddress = new Uri($"{NavigationManager.BaseUri}");
+        var json = await httpClient.GetStringAsync("representatives.json");
+
+        if (json == null)
+        {
+            names = new List<Representative>();
+        }
+        else{
+            
+            names = JsonSerializer.Deserialize<List<Representative>>(json, new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        });
+        }
+
+        
+    }
+
+}
+

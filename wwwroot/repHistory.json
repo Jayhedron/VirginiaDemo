@@ -1,0 +1,290 @@
+[
+    {
+      "Years": 1900,
+      "Democrats": 93,
+      "Republicans": 7,
+      "Independents": 0
+    },
+    {
+      "Years": 1904,
+      "Democrats": 86,
+      "Republicans": 14,
+      "Independents": 0
+    },
+    {
+      "Years": 1912,
+      "Democrats": 90,
+      "Republicans": 10,
+      "Independents": 0
+    },
+    {
+      "Years": 1914,
+      "Democrats": 92,
+      "Republicans": 8,
+      "Independents": 0
+    },
+    {
+      "Years": 1916,
+      "Democrats": 88,
+      "Republicans": 12,
+      "Independents": 0
+    },
+    {
+      "Years": 1922,
+      "Democrats": 95,
+      "Republicans": 5,
+      "Independents": 0
+    },
+    {
+      "Years": 1924,
+      "Democrats": 97,
+      "Republicans": 3,
+      "Independents": 0
+    },
+    {
+      "Years": 1926,
+      "Democrats": 95,
+      "Republicans": 5,
+      "Independents": 0
+    },
+    {
+      "Years": 1928,
+      "Democrats": 93,
+      "Republicans": 7,
+      "Independents": 0
+    },
+    {
+      "Years": 1930,
+      "Democrats": 95,
+      "Republicans": 5,
+      "Independents": 0
+    },
+    {
+      "Years": 1934,
+      "Democrats": 93,
+      "Republicans": 7,
+      "Independents": 0
+    },
+    {
+      "Years": 1940,
+      "Democrats": 97,
+      "Republicans": 3,
+      "Independents": 0
+    },
+    {
+      "Years": 1944,
+      "Democrats": 94,
+      "Republicans": 6,
+      "Independents": 0
+    },
+    {
+      "Years": 1946,
+      "Democrats": 93,
+      "Republicans": 7,
+      "Independents": 0
+    },
+    {
+      "Years": 1950,
+      "Democrats": 94,
+      "Republicans": 6,
+      "Independents": 0
+    },
+    {
+      "Years": 1960,
+      "Democrats": 96,
+      "Republicans": 4,
+      "Independents": 0
+    },
+    {
+      "Years": 1962,
+      "Democrats": 94,
+      "Republicans": 5,
+      "Independents": 1
+    },
+    {
+      "Years": 1964,
+      "Democrats": 89,
+      "Republicans": 11,
+      "Independents": 0
+    },
+    {
+      "Years": 1966,
+      "Democrats": 87,
+      "Republicans": 12,
+      "Independents": 1
+    },
+    {
+      "Years": 1968,
+      "Democrats": 86,
+      "Republicans": 14,
+      "Independents": 0
+    },
+    {
+      "Years": 1970,
+      "Democrats": 75,
+      "Republicans": 24,
+      "Independents": 1
+    },
+    {
+      "Years": 1972,
+      "Democrats": 73,
+      "Republicans": 24,
+      "Independents": 3
+    },
+    {
+      "Years": 1974,
+      "Democrats": 65,
+      "Republicans": 20,
+      "Independents": 15
+    },
+    {
+      "Years": 1976,
+      "Democrats": 78,
+      "Republicans": 17,
+      "Independents": 5
+    },
+    {
+      "Years": 1978,
+      "Democrats": 76,
+      "Republicans": 21,
+      "Independents": 3
+    },
+    {
+      "Years": 1980,
+      "Democrats": 74,
+      "Republicans": 25,
+      "Independents": 1
+    },
+    {
+      "Years": 1982,
+      "Democrats": 66,
+      "Republicans": 32,
+      "Independents": 2
+    },
+    {
+      "Years": 1984,
+      "Democrats": 65,
+      "Republicans": 34,
+      "Independents": 1
+    },
+    {
+      "Years": 1986,
+      "Democrats": 65,
+      "Republicans": 33,
+      "Independents": 2
+    },
+    {
+      "Years": 1988,
+      "Democrats": 64,
+      "Republicans": 35,
+      "Independents": 1
+    },
+    {
+      "Years": 1990,
+      "Democrats": 59,
+      "Republicans": 40,
+      "Independents": 1
+    },
+    {
+      "Years": 1992,
+      "Democrats": 58,
+      "Republicans": 41,
+      "Independents": 1
+    },
+    {
+      "Years": 1994,
+      "Democrats": 52,
+      "Republicans": 47,
+      "Independents": 1
+    },
+    {
+      "Years": 1996,
+      "Democrats": 52,
+      "Republicans": 47,
+      "Independents": 1
+    },
+    {
+      "Years": 1998,
+      "Democrats": 50,
+      "Republicans": 49,
+      "Independents": 1
+    },
+    {
+      "Years": 2000,
+      "Democrats": 47,
+      "Republicans": 52,
+      "Independents": 1
+    },
+    {
+      "Years": 2002,
+      "Democrats": 34,
+      "Republicans": 64,
+      "Independents": 2
+    },
+    {
+      "Years": 2004,
+      "Democrats": 37,
+      "Republicans": 61,
+      "Independents": 2
+    },
+    {
+      "Years": 2006,
+      "Democrats": 40,
+      "Republicans": 57,
+      "Independents": 3
+    },
+    {
+      "Years": 2008,
+      "Democrats": 44,
+      "Republicans": 54,
+      "Independents": 2
+    },
+    {
+      "Years": 2010,
+      "Democrats": 39,
+      "Republicans": 59,
+      "Independents": 2
+    },
+    {
+      "Years": 2012,
+      "Democrats": 32,
+      "Republicans": 66,
+      "Independents": 2
+    },
+    {
+      "Years": 2014,
+      "Democrats": 32,
+      "Republicans": 67,
+      "Independents": 1
+    },
+    {
+      "Years": 2016,
+      "Democrats": 34,
+      "Republicans": 66,
+      "Independents": 0
+    },
+    {
+      "Years": 2018,
+      "Democrats": 49,
+      "Republicans": 51,
+      "Independents": 0
+    },
+    {
+      "Years": 2020,
+      "Democrats": 55,
+      "Republicans": 45,
+      "Independents": 0
+    },
+    {
+      "Years": 2022,
+      "Democrats": 48,
+      "Republicans": 52,
+      "Independents": 0
+    },
+    {
+      "Years": 2024,
+      "Democrats": 51,
+      "Republicans": 49,
+      "Independents": 0
+    }
+   ]

@@ -1,0 +1,158 @@
+@page "/piechart"
+
+@using System.Text.Json
+@using Radzen
+@using Radzen.Blazor
+@inject IHttpClientFactory HttpClientFactory
+@inject NavigationManager NavigationManager
+
+
+<RadzenCard Class="rz-my-1 rz-mx-auto" style="margin: 1rem calc(-1 * var(--rz-card-padding)); max-width: 800px">
+    <RadzenChart>
+        <RadzenPieSeries Fills=@(new [] { "#FF0000", "#0000FF", "#800080" }) Data="@repCurrent" Title="Reps"
+            CategoryProperty="Party" ValueProperty="Total">
+            <RadzenSeriesDataLabels Visible="@showDataLabels" />
+        </RadzenPieSeries>
+    </RadzenChart>
+</RadzenCard>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 my-5">
+            <RadzenChart>
+                <RadzenLineSeries Data="@republicanHistory" CategoryProperty="Year" Title="Republicans"
+                    LineType="LineType.Dashed" ValueProperty="Count">
+                    <RadzenMarkers Fill=@("#FF0000") MarkerType="MarkerType.Square" />
+                    <RadzenSeriesDataLabels Visible="@showDataLabels" />
+                </RadzenLineSeries>
+                <RadzenLineSeries Data="@democratHistory" CategoryProperty="Year" Title="Democrats"
+                    ValueProperty="Count">
+                    <RadzenMarkers Fill=@("#0000FF") MarkerType="MarkerType.Circle" />
+                    <RadzenSeriesDataLabels Visible="@showDataLabels" />
+                </RadzenLineSeries>
+                <RadzenLineSeries Data="@independentHistory" CategoryProperty="Year" Title="Independents"
+                    ValueProperty="Count">
+                    <RadzenMarkers Fill=@("#800080") MarkerType="MarkerType.Diamond" />
+                    <RadzenSeriesDataLabels Visible="@showDataLabels" />
+                </RadzenLineSeries>
+                <RadzenCategoryAxis Formatter="@FormatAsYear" />
+                <RadzenValueAxis Max="100" Min="0" Step="10">
+                    <RadzenGridLines Visible="true" />
+                    <RadzenAxisTitle Text="Revenue in USD" />
+                </RadzenValueAxis>
+            </RadzenChart>
+        </div>
+    </div>
+</div>
+
+
+@code {
+    bool showDataLabels = false;
+    private List<RepHistory>? repHistory;
+    private DataItem[]? repCurrent;
+
+    private HistoryItem[] republicanHistory = new HistoryItem[48];
+    private HistoryItem[] democratHistory = new HistoryItem[48];
+    private HistoryItem[] independentHistory = new HistoryItem[48];
+
+
+    class DataItem
+    {
+        public string? Party { get; set; }
+        public int? Total { get; set; }
+    }
+
+    class HistoryItem
+    {
+        public string? Year { get; set; }
+        public int? Count { get; set; }
+
+        public HistoryItem(string? year, int? count)
+        {
+            Year = year;
+            Count = count;
+        }
+    }
+
+    string FormatAsYear(object value)
+    {
+        if (value != null && value is string yearString)
+        {
+            return yearString.Substring(2);
+        }
+
+        return string.Empty;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var httpClient = HttpClientFactory.CreateClient();
+        httpClient.BaseAddress = new Uri($"{NavigationManager.BaseUri}");
+        var json = await httpClient.GetStringAsync("repHistory.json");
+
+        if (json == null)
+        {
+            repHistory = new List<RepHistory>();
+        }
+        else
+        {
+
+            repHistory = JsonSerializer.Deserialize<List<RepHistory>>(json, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+            repCurrent = GetCurrentPartyBreakdown(repHistory.Last());
+            GetHistoryPartyBreakdown(repHistory);
+        }
+
+
+
+    }
+
+    private DataItem[] GetCurrentPartyBreakdown(RepHistory repHistory)
+    {
+        DataItem[] currentHistory = new DataItem[] {
+new DataItem
+{
+Party = "Republicans",
+Total = repHistory.Republicans
+},
+new DataItem
+{
+Party = "Democrat",
+Total = repHistory.Democrats
+},
+new DataItem
+{
+Party = "Independent",
+Total = repHistory.Independents
+},
+};
+
+        return currentHistory;
+    }
+
+    private void GetHistoryPartyBreakdown(List<RepHistory> repHistory)
+    {
+        int size = repHistory.Count;
+
+        HistoryItem[] repArray = new HistoryItem[size];
+        HistoryItem[] demArray = new HistoryItem[size];
+        HistoryItem[] indArray = new HistoryItem[size];
+
+        for (int i = 0; i < size; i++)
+        {
+            RepHistory rp = repHistory[i];
+            repArray[i] = new HistoryItem(rp.Years?.ToString(), rp.Republicans);
+            demArray[i] = new HistoryItem(rp.Years?.ToString(), rp.Democrats);
+            indArray[i] = new HistoryItem(rp.Years?.ToString(), rp.Independents);
+        }
+
+        repArray.CopyTo(republicanHistory, 0);
+        demArray.CopyTo(democratHistory, 0);
+        indArray.CopyTo(independentHistory, 0);
+
+
+
+    }
+}
