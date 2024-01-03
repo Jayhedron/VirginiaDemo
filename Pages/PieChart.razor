@@ -6,8 +6,14 @@
 @inject IHttpClientFactory HttpClientFactory
 @inject NavigationManager NavigationManager
 
+<RadzenText TextStyle="TextStyle.H5" class="rz-display-flex rz-mt-6 rz-my-0">
+    Graphs displaying Virginia House of Delegates in relation to their party affiliation
+</RadzenText>
 
-<RadzenCard Class="rz-my-1 rz-mx-auto" style="margin: 1rem calc(-1 * var(--rz-card-padding)); max-width: 800px">
+<RadzenCard Class="rz-mt-12 rz-mx-auto" style="margin: 1rem calc(-1 * var(--rz-card-padding)); max-width: 800px">
+    <RadzenText TextStyle="TextStyle.Body1" class="rz-display-flex rz-mt-6 rz-my-0">
+        Pie chart distribution by party.
+    </RadzenText>
     <RadzenChart>
         <RadzenPieSeries Fills=@(new [] { "#FF0000", "#0000FF", "#800080" }) Data="@repCurrent" Title="Reps"
             CategoryProperty="Party" ValueProperty="Total">
@@ -16,34 +22,33 @@
     </RadzenChart>
 </RadzenCard>
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12 my-5">
-            <RadzenChart>
-                <RadzenLineSeries Data="@republicanHistory" CategoryProperty="Year" Title="Republicans"
-                    LineType="LineType.Dashed" ValueProperty="Count">
-                    <RadzenMarkers Fill=@("#FF0000") MarkerType="MarkerType.Square" />
-                    <RadzenSeriesDataLabels Visible="@showDataLabels" />
-                </RadzenLineSeries>
-                <RadzenLineSeries Data="@democratHistory" CategoryProperty="Year" Title="Democrats"
-                    ValueProperty="Count">
-                    <RadzenMarkers Fill=@("#0000FF") MarkerType="MarkerType.Circle" />
-                    <RadzenSeriesDataLabels Visible="@showDataLabels" />
-                </RadzenLineSeries>
-                <RadzenLineSeries Data="@independentHistory" CategoryProperty="Year" Title="Independents"
-                    ValueProperty="Count">
-                    <RadzenMarkers Fill=@("#800080") MarkerType="MarkerType.Diamond" />
-                    <RadzenSeriesDataLabels Visible="@showDataLabels" />
-                </RadzenLineSeries>
-                <RadzenCategoryAxis Formatter="@FormatAsYear" />
-                <RadzenValueAxis Max="100" Min="0" Step="10">
-                    <RadzenGridLines Visible="true" />
-                    <RadzenAxisTitle Text="Revenue in USD" />
-                </RadzenValueAxis>
-            </RadzenChart>
-        </div>
-    </div>
-</div>
+<RadzenCard Class="rz-my-1 rz-mx-auto" style="margin: 1rem calc(-1 * var(--rz-card-padding)); max-width: 1500px">
+    <RadzenText TextStyle="TextStyle.Body1" class="rz-display-flex rz-mt-6 rz-my-0">
+        Line graph shows the number of delegates based on party affliation (Republican, Democrat, and Independent) from
+        the years 1900 to 2024.
+    </RadzenText>
+    <RadzenChart>
+        <RadzenLineSeries Data="@republicanHistory" CategoryProperty="Year" Title="Republicans"
+            LineType="LineType.Dashed" ValueProperty="Count">
+            <RadzenMarkers Fill=@("#FF0000") MarkerType="MarkerType.Square" />
+            <RadzenSeriesDataLabels Visible="@showDataLabels" />
+        </RadzenLineSeries>
+        <RadzenLineSeries Data="@democratHistory" CategoryProperty="Year" Title="Democrats" ValueProperty="Count">
+            <RadzenMarkers Fill=@("#0000FF") MarkerType="MarkerType.Circle" />
+            <RadzenSeriesDataLabels Visible="@showDataLabels" />
+        </RadzenLineSeries>
+        <RadzenLineSeries Data="@independentHistory" CategoryProperty="Year" Title="Independents" ValueProperty="Count">
+            <RadzenMarkers Fill=@("#800080") MarkerType="MarkerType.Diamond" />
+            <RadzenSeriesDataLabels Visible="@showDataLabels" />
+        </RadzenLineSeries>
+        <RadzenCategoryAxis Formatter="@FormatAsYear" />
+        <RadzenValueAxis Max="100" Min="0" Step="10">
+            <RadzenGridLines Visible="true" />
+            <RadzenAxisTitle Text="Delegate Count" />
+        </RadzenValueAxis>
+    </RadzenChart>
+</RadzenCard>
+
 
 
 @code {

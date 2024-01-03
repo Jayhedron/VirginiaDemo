@@ -9,51 +9,55 @@
 <RadzenCard Class="rz-mx-auto vir-content-background">
     <RadzenStack Orientation="Orientation.Vertical" JustifyContent="JustifyContent.Start" Gap="1rem" Class="rz-p-4">
         <RadzenCard Class="rz-my-1 rz-mx-auto" style="margin: 1rem calc(-1 * var(--rz-card-padding));">
-        <RadzenRow RowGap="0">
-            <RadzenColumn Size="2" class="rz-p-5">
+            <RadzenRow RowGap="0">
+                <RadzenColumn Size="2" class="rz-p-5">
                     <div class="text-center mb-3">
-                    <img src="Seal_of_Virginia.png" alt="Seal of Virginia" class="img-fluid" mx-auto />
+                        <img src="Seal_of_Virginia.png" alt="Seal of Virginia" class="img-fluid" mx-auto />
                     </div>
-            </RadzenColumn>
-            <RadzenColumn class="rz-p-5">
-                    <RadzenText TextStyle="TextStyle.Overline" class="rz-display-flex rz-mt-6 rz-my-0">Virginia House of Delegates</RadzenText>
-                    <RadzenText TextStyle="TextStyle.Body1" class="rz-display-flex rz-mt-6 rz-my-0">163rd Virginia General Assembly</RadzenText>
-                    <RadzenText TextStyle="TextStyle.Overline" class="rz-display-flex rz-mt-6 rz-my-0">New session started</RadzenText>
-                    <RadzenText TextStyle="TextStyle.Body1" class="rz-display-flex rz-mt-6 rz-my-0">January 10, 2024</RadzenText>
-            </RadzenColumn>
-            <RadzenColumn class="rz-p-5">
+                </RadzenColumn>
+                <RadzenColumn class="rz-p-5">
+                    <RadzenText TextStyle="TextStyle.Overline" class="rz-display-flex rz-mt-6 rz-my-0">Virginia House of
+                        Delegates</RadzenText>
+                    <RadzenText TextStyle="TextStyle.Body1" class="rz-display-flex rz-mt-6 rz-my-0">163rd Virginia
+                        General Assembly</RadzenText>
+                    <RadzenText TextStyle="TextStyle.Overline" class="rz-display-flex rz-mt-6 rz-my-0">New session
+                        started</RadzenText>
+                    <RadzenText TextStyle="TextStyle.Body1" class="rz-display-flex rz-mt-6 rz-my-0">January 10, 2024
+                    </RadzenText>
+                </RadzenColumn>
+                <RadzenColumn class="rz-p-5">
                     <RadzenText TextStyle="TextStyle.Body1" class="rz-display-flex rz-mt-4 rz-mb-0">
-                                <p>@text?.Composition</p>
-                            </RadzenText>
-            </RadzenColumn>
-                
-        </RadzenRow>
+                        <p>@text?.Composition</p>
+                    </RadzenText>
+                </RadzenColumn>
+
+            </RadzenRow>
         </RadzenCard>
         <RadzenCard Class=".rz-mb-2 rz-mx-auto vir-content" Style="max-width: 800px">
-        <RadzenRow RowGap="0">
+            <RadzenRow RowGap="0">
                 <RadzenText TextStyle="TextStyle.H4" class="rz-display-flex rz-mt-6 rz-my-0">Composition</RadzenText>
                 <RadzenText TextStyle="TextStyle.Body1" class="rz-display-flex rz-mt-2 rz-my-0">
                     <p>@text?.Introduction</p>
                 </RadzenText>
-        <RadzenRow RowGap="0">
-            <RadzenText TextStyle="TextStyle.H4" class="rz-display-flex rz-mt-6 rz-my-0">History</RadzenText>
-                <RadzenText TextStyle="TextStyle.Body1" class="rz-display-flex rz-mt-2 rz-my-0">
-                    <p>@text?.History</p>
-                </RadzenText>
-        </RadzenRow>
-        </RadzenRow>
+                <RadzenRow RowGap="0">
+                    <RadzenText TextStyle="TextStyle.H4" class="rz-display-flex rz-mt-6 rz-my-0">History</RadzenText>
+                    <RadzenText TextStyle="TextStyle.Body1" class="rz-display-flex rz-mt-2 rz-my-0">
+                        <p>@text?.History</p>
+                    </RadzenText>
+                </RadzenRow>
+            </RadzenRow>
         </RadzenCard>
-        
-        </RadzenStack>
-        
-    
+
+    </RadzenStack>
+
+
 </RadzenCard>
 
 
 
 @code {
 
-    
+
     private TextSource? text;
 
     protected override async Task OnInitializedAsync()
@@ -66,14 +70,16 @@
         {
             text = new TextSource();
         }
-        else{
-            try {
-            text = JsonSerializer.Deserialize<TextSource>(json, new JsonSerializerOptions
-                
+        else
         {
-            PropertyNameCaseInsensitive = true
-        });
-                }
+            try
+            {
+                text = JsonSerializer.Deserialize<TextSource>(json, new JsonSerializerOptions
+
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
+            }
             catch (Exception ex)
             {
                 // Log or handle the exception
@@ -82,7 +88,7 @@
             }
         }
 
-        
+
     }
 
 }
